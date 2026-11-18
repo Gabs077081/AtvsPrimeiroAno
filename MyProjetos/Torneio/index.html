@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>🏆 Torneio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>🏆 TORNEIO</h1>
+            <p>Classificação e confrontos</p>
+        </header>
+
+
+        <!-- JOGADORES -->
+
+        <section class="card">
+
+            <h2>👥 Jogadores</h2>
+
+            <div class="form-jogador">
+
+                <input
+                    type="text"
+                    id="nomeJogador"
+                    placeholder="Nome do jogador"
+                    maxlength="30"
+                >
+
+                <button
+                    id="btnAdicionarJogador"
+                    onclick="adicionarJogador()"
+                >
+                    Adicionar jogador
+                </button>
+
+            </div>
+
+            <div id="listaJogadores"></div>
+
+        </section>
+
+
+        <!-- CLASSIFICAÇÃO -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+                <div>
+                    <h2>📊 Classificação</h2>
+                    <p>Ranking atual do torneio</p>
+                </div>
+
+                <button
+                    class="botao-atualizar"
+                    onclick="carregarTudo()"
+                >
+                    🔄 Atualizar
+                </button>
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Jogador</th>
+                            <th>Pts.</th>
+                            <th>Conf.</th>
+                            <th>Vit.</th>
+                            <th>Gols</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tabelaClassificacao">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOVO CONFRONTO -->
+
+        <section class="card">
+
+            <h2>⚔️ Novo confronto</h2>
+
+            <p class="descricao">
+                Escolha os jogadores e registre de 1 a 5 partidas.
+            </p>
+
+
+            <div class="selecionar-jogadores">
+
+                <div>
+
+                    <label for="jogador1">
+                        Jogador 1
+                    </label>
+
+                    <select id="jogador1">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <span class="versus">
+                    VS
+                </span>
+
+
+                <div>
+
+                    <label for="jogador2">
+                        Jogador 2
+                    </label>
+
+                    <select id="jogador2">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="partidas">
+
+                <!-- PARTIDA 1 -->
+
+                <div class="partida">
+
+                    <div class="partida-titulo">
+                        Partida 1
+                    </div>
+
+                    <div class="placar">
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p1_1"
+                            placeholder="0"
+                        >
+
+                        <span>×</span>
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p2_1"
+                            placeholder="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PARTIDA 2 -->
+
+                <div class="partida">
+
+                    <div class="partida-titulo">
+                        Partida 2
+                    </div>
+
+                    <div class="placar">
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p1_2"
+                            placeholder="0"
+                        >
+
+                        <span>×</span>
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p2_2"
+                            placeholder="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PARTIDA 3 -->
+
+                <div class="partida">
+
+                    <div class="partida-titulo">
+                        Partida 3
+                    </div>
+
+                    <div class="placar">
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p1_3"
+                            placeholder="0"
+                        >
+
+                        <span>×</span>
+
+                        <input
+                            type="number"
+                            min="0"
+                            id="p2_3"
+                            placeholder="0"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="botoes-confronto">
+
+                <button
+                    class="botao-secundario"
+                    onclick="adicionarPartida()"
+                >
+                    + Adicionar partida
+                </button>
+
+                <button
+                    onclick="registrarConfronto()"
+                    id="btnRegistrar"
+                >
+                    🏆 Registrar confronto
+                </button>
+
+            </div>
+
+
+            <div id="mensagem"></div>
+
+        </section>
+
+
+        <!-- HISTÓRICO -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <div>
+
+                    <h2>📜 Histórico</h2>
+
+                    <p>
+                        Confrontos já realizados
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="historico">
+
+                <p class="vazio">
+                    Nenhum confronto registrado.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REGRAS -->
+
+        <section class="card regras">
+
+            <h2>📖 Regras</h2>
+
+            <div class="regra">
+                <strong>1 partida:</strong>
+                melhor desempenho recebe 1 ponto.
+            </div>
+
+            <div class="regra">
+                <strong>2 partidas:</strong>
+                mais vitórias recebe 1 ponto.
+                Empate em vitórias → maior número de gols.
+            </div>
+
+            <div class="regra">
+                <strong>3 partidas:</strong>
+                vencedor da melhor de 3 recebe 1 ponto.
+            </div>
+
+            <div class="regra">
+                <strong>4 partidas:</strong>
+                melhor de 3 vale 1 ponto +
+                vencedor da 4ª partida vale 1 ponto.
+            </div>
+
+            <div class="regra">
+                <strong>5 partidas:</strong>
+                melhor de 3 vale 1 ponto +
+                4ª partida vale 1 ponto +
+                5ª partida vale 1 ponto.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        🏆 Torneio
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
