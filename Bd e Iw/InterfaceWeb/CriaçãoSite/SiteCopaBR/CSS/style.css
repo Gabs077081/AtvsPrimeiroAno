@@ -1,0 +1,28 @@
+body{
+    margin:0;
+}
+
+.coluna3{
+    background-color: rgb(144, 178, 239);
+    width:32%;
+    float:left;
+    margin-left:5px;
+    margin-right: 5px;
+}
+
+.coluna3 img{
+    width:100%;
+    height:290px;
+}
+
+.coluna4{
+    width:24%;
+    float:left;
+    margin-left:5px;
+    margin-right: 5px;
+}
+
+.coluna4 img{
+    width:90%;
+    height:320px;
+}
