@@ -1,0 +1,170 @@
+
+body {
+    margin: 0;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #004d98;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("img/BanerPrincipal.webp");
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.banner h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.introducao {
+    text-align: center;
+    padding: 40px 10px;
+}
+
+/* GRID HOME */
+.grid-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding-bottom: 40px;
+}
+
+.grid-home img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* PÁGINAS INTERNAS */
+.pagina {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.pagina h1 {
+    color: #004d98;
+    margin-bottom: 25px;
+}
+
+/* IMAGENS DAS PÁGINAS */
+.imagem-pagina {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+/* GRID CONQUISTAS */
+.grid-conquistas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.destaque {
+    background-color: #004d98;
+    color: white;
+    padding: 30px 15px;
+    border-radius: 10px;
+}
+
+/* GRID JOGADORES */
+.grid-jogadores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.grid-jogadores img {
+    width: 100%;
+    height: 330px;
+    object-fit: contain;
+    background-color: #0b1d3a;
+    padding-top: 10px;
+}
+
+/* CARDS */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.card h5 {
+    color: #a50044;
+    font-weight: bold;
+}
+
+.card-body {
+    text-align: center;
+    padding: 20px;
+}
+
+/* BOTÕES */
+.btn-primary {
+    background-color: #004d98;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #a50044;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: #004d98;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+
+    .grid-home {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-jogadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-conquistas {
+        grid-template-columns: 1fr;
+    }
+
+    .banner h1 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .grid-home,
+    .grid-jogadores {
+        grid-template-columns: 1fr;
+    }
+}
